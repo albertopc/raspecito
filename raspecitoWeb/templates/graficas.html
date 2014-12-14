@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<p>
+	<a href="/wstation" class="btn btn-primary" role="button">Volver</a>
+</p>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+	{% if type == "t" %}
+		<h3 class="panel-title">Temperatura</h3>
+	{% elif type == "h" %}
+		<h3 class="panel-title">Humedad</h3>
+	{% elif type == "p" %}
+		<h3 class="panel-title">Presión</h3>
+	{% elif type == "l" %}
+		<h3 class="panel-title">Luminosidad</h3>
+	{% elif type == "m" %}
+		<h3 class="panel-title">Presencia</h3>
+	{% endif %}
+	</div>
+	<div class="panel-body">
+	{% if type == "t" %}
+		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/14265/charts/3?width=300&height=260&days=1&dynamic=true&yaxis=ºC&timescale=60"></iframe>
+	{% elif type == "h" %}
+		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/14265/charts/2?width=300&height=260&days=1&dynamic=true&yaxis=%25&timescale=60"></iframe>
+	{% elif type == "p" %}
+		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/14265/charts/4?width=300&height=260&days=1&dynamic=true&yaxis=hPa&timescale=60"></iframe>
+	{% elif type == "l" %}
+		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/14265/charts/7?width=300&height=260&days=1&dynamic=true&yaxis=lx&average=60"></iframe>
+	{% elif type == "m" %}
+		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/19524/charts/1?width=300&height=260&days=1&dynamic=true&yaxis=Presencia&sum=30&type=column"></iframe>
+	{% endif %}
+	</div>
+</div>
+
+{% endblock %}

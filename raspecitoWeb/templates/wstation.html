@@ -1,0 +1,42 @@
+<meta http-equiv="refresh" content="30">
+
+{% extends "base.html" %}
+{% block content %}
+<p>
+	<a href="/" class="btn btn-primary" role="button">Volver</a>
+</p>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Sensores</h3>
+	</div>
+	<div class="panel-body">
+		<table class="table table-striped">
+			<tbody>
+				<tr>
+					<td><a href="/graficas?type=t">Temperatura</a></td>
+					<td><a href="/graficas?type=t"><span class="badge">{{'{:.2f}'.format(temperature)}} <sup>o</sup>C</span></a></td>
+				</tr>					
+				<tr>
+					<td><a href="/graficas?type=h">Humedad</a></td>
+					<td><a href="/graficas?type=h"><span class="badge">{{'{:.2f}'.format(humidity)}} %</span></a></td>
+				</tr>					
+				<tr>
+					<td><a href="/graficas?type=p">Presión</a></td>
+					<td><a href="/graficas?type=p"><span class="badge">{{'{:.2f}'.format(pressure)}} hPa</span></a></td>
+				</tr>					
+				<tr>
+					<td><a href="/graficas?type=l">Luminosidad</a></td>
+					<td><a href="/graficas?type=l"><span class="badge">{{'{:.2f}'.format(light)}} lx</span></a></td>
+				</tr>					
+				<tr>
+					<td><a href="/graficas?type=m">Presencia</a></td>
+					<td><a href="/graficas?type=m"><span class="badge">{{ presence }}</span></a></td>
+				</tr>					
+			</tbody>
+		</table>
+	</div>
+	<div align="center">{{ now }}</div>
+</div>
+
+{% endblock %}

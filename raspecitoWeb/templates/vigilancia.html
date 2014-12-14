@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<p>
+	<a href="/" class="btn btn-primary" role="button">Volver</a>
+	<a href="/vigilancia" class="btn btn-default" role="button">Recargar</a>
+	<a href="/snapshot" class="btn btn-warning" role="button">Capturar</a>
+	{% if capture %}
+	<a href="/captureOff" class="btn btn-danger" role="button">Desactivar Captura</a>
+	{% else %}
+	<a href="/captureOn" class="btn btn-success" role="button">Activar Captura</a>
+	{% endif %}
+</p>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Capturas realizadas
+	</div>
+	<div class="panel-body">
+	<ul>
+	{% if fotos %}
+		{% for i in fotos %}
+			<li>
+				<a href="/seeSnapshot?id={{i}}">{{i}}</a>
+				<a href="/seeSnapshot?id={{i}}"><button type="button" class="btn btn-xs btn-info">Ver</button></a>
+				<a href="/deleteImage?id={{i}}"><button type="button" class="btn btn-xs btn-danger">Borrar</button></a>
+			</li>
+		{% endfor %}
+	{% else %}
+		No hay capturas disponibles
+	{% endif %}
+	</ul>
+	</div>
+</div>	  
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Presencia (3 días)</h3>
+	</div>
+	<div class="panel-body">
+		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/19524/charts/1?width=300&height=260&days=3&dynamic=true&yaxis=Presencia&sum=60&type=column"></iframe>
+	</div>
+</div>
+
+{% endblock %}

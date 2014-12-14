@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Raspecito Domotool">
+		<meta name="author" content="Alberto P.C.">
+		<link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico')}}" />
+
+		{% if title %}
+		<title>Raspecito - {{ title }}</title>
+		{% else %}
+		<title>Raspecito</title>
+		{% endif %}
+
+		<!--bootstrap-->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="{{url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
+		<link href="{{url_for('static',filename='css/bootstrap-theme.min.css')}}" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="{{url_for('static',filename='theme.css')}}" rel="stylesheet">
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body role="document">
+
+		<!-- Fixed navbar -->
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		  <div class="container">
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand" href="#">Raspecito</a>
+			</div>
+			{% if user != "desconocido" %}
+			<div id="navbar" class="navbar-collapse collapse">
+			  <ul class="nav navbar-nav">
+				<li {% if active=="0" %} class="active" {% endif %}><a href="/index">Inicio</a></li>
+				<li {% if active=="1" %} class="active" {% endif %}><a href="/wstation">Sensores</a></li>
+				<li {% if active>"2" and active<"3" %} class="active" {% endif %} class="dropdown">
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gráficas <span class="caret"></span></a>
+				  <ul class="dropdown-menu" role="menu">
+					<li {% if active=="2.t" %} class="active" {% endif %}><a href="/graficas?type=t">Temperatura</a></li>
+					<li {% if active=="2.h" %} class="active" {% endif %}><a href="/graficas?type=h">Humedad</a></li>
+					<li {% if active=="2.p" %} class="active" {% endif %}><a href="/graficas?type=p">Presión</a></li>
+					<li {% if active=="2.l" %} class="active" {% endif %}><a href="/graficas?type=l">Luminosidad</a></li>
+					<li {% if active=="2.m" %} class="active" {% endif %}><a href="/graficas?type=m">Presencia</a></li>
+				  </ul>
+				</li>
+				<li {% if active=="3" %} class="active" {% endif %}><a href="/vigilancia">Vigilancia</a></li>
+				<li {% if active=="4" %} class="active" {% endif %}><a href="/about">Acerca de...</a></li>
+			  </ul>
+			</div><!--/.nav-collapse -->
+			{% endif %}
+		  </div>
+		</nav>
+
+		<div class="container theme-showcase" role="main">
+
+		{% block content %}{% endblock %}
+
+	    </div> <!-- /container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+	</body>
+</html>
+
+
+
+

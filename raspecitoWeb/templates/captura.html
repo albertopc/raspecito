@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<p>
+	<a href="/vigilancia" class="btn btn-primary" role="button">Volver</a>
+	<a href="/deleteImage?id={{id}}"><button type="button" class="btn btn-danger">Borrar</button>
+</p>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		{{id}}
+	</div>
+	<div class="panel-body">
+		<p><img width="100%" src="{{url_for('static',filename='snapshots/'+id)}}"></p>
+	</div>
+</div>
+{% endblock %}
