@@ -59,3 +59,4 @@ raspecitoWeb/static/snapshots
 config.py
 venv/
 tmp/
+.captureImage
