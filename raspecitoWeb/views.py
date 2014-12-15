@@ -19,6 +19,7 @@ from dht22 import readHumidity
 from gy65 import readPressure
 from hcsr501 import readMotion
 from fswebcam import captureImage
+from tools import *
 
 #AUTH functions
 
@@ -145,3 +146,16 @@ def about():
                            title='Acerca de...',
 						   active="4"
 						   )
+
+@raspecitoWeb.route('/admin', methods=["GET", "POST"])
+@requires_auth
+def admin():
+	if request.args.get("type")=="r":
+		# Reboot
+		reboot()
+
+		return render_template("esperar.html",
+			title='Esperar',
+			active="4"+"."+request.args.get("type")
+			)
+				

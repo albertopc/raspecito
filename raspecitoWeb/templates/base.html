@@ -61,7 +61,13 @@
 				  </ul>
 				</li>
 				<li {% if active=="3" %} class="active" {% endif %}><a href="/vigilancia">Vigilancia</a></li>
-				<li {% if active=="4" %} class="active" {% endif %}><a href="/about">Acerca de...</a></li>
+				<li {% if active>"4" and active<"5" %} class="active" {% endif %} class="dropdown">
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administración<span class="caret"></span></a>
+				  <ul class="dropdown-menu" role="menu">
+					<li {% if active=="4.r" %} class="active" {% endif %}><a href="/admin?type=r">Reboot</a></li>
+				  </ul>
+				</li>
+				<li {% if active=="5" %} class="active" {% endif %}><a href="/about">Acerca de...</a></li>
 			  </ul>
 			</div><!--/.nav-collapse -->
 			{% endif %}
