@@ -4,10 +4,10 @@ import sys
 import datetime
 import pwd
 import grp
-from functools import wraps
 
 from flask import url_for, render_template
 from flask import request, Response
+from functools import wraps
 
 import config
 
@@ -36,7 +36,6 @@ def authenticate():
 		401,
 		{'WWW-Authenticate': 'Basic realm="Raspecito Web requiere clave"'})
 
-		
 def requires_auth(f):
 	@wraps(f)
 	def decorated(*args, **kwargs):
@@ -45,10 +44,6 @@ def requires_auth(f):
 			return authenticate()
 		return f(*args, **kwargs)
 	return decorated
-
-def touch(path):
-    with open(path, 'a'):
-        os.utime(path, None)
 
 #MyAPP functions
 
@@ -59,7 +54,7 @@ def index():
     return render_template("index.html",
                            title='Home',
 						   active="0"
-						)
+   )
 
 @raspecitoWeb.route('/wstation')
 @requires_auth
@@ -72,7 +67,7 @@ def wstation():
 		'presence':readMotion(),
 		'now':datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')
 	}
-
+	
 	return render_template("wstation.html",
 		title='Weather Station',
 		active="1",
@@ -119,9 +114,6 @@ def deleteImage():
 @requires_auth
 def captureOn():
 	touch(config.captureImageFlagFile)
-	uid = pwd.getpwnam("pi").pw_uid
-	gid = grp.getgrnam("pi").gr_gid
-	os.chown(config.captureImageFlagFile, uid, gid)
 	return vigilancia()
 
 @raspecitoWeb.route('/seeSnapshot', methods=["GET", "POST"])
@@ -142,10 +134,16 @@ def captureOff():
 @raspecitoWeb.route('/about')
 @requires_auth
 def about():
-    return render_template("about.html",
-                           title='Acerca de...',
-						   active="4"
-						   )
+	tData={
+		'now':datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S'),
+		'uptime':uptime()
+	}
+
+	return render_template("about.html",
+							title='Acerca de...',
+							active="4",
+							**tData
+	)
 
 @raspecitoWeb.route('/admin', methods=["GET", "POST"])
 @requires_auth

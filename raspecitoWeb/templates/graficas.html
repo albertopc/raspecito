@@ -15,7 +15,7 @@
 	{% elif type == "l" %}
 		<h3 class="panel-title">Luminosidad</h3>
 	{% elif type == "m" %}
-		<h3 class="panel-title">Presencia</h3>
+		<h3 class="panel-title">Movimiento</h3>
 	{% endif %}
 	</div>
 	<div class="panel-body">
@@ -28,7 +28,7 @@
 	{% elif type == "l" %}
 		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/14265/charts/7?width=300&height=260&days=1&dynamic=true&yaxis=lx&average=60"></iframe>
 	{% elif type == "m" %}
-		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/19524/charts/1?width=300&height=260&days=1&dynamic=true&yaxis=Presencia&sum=30&type=column"></iframe>
+		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/19524/charts/1?width=300&height=260&days=1&dynamic=true&yaxis=Movimiento&sum=30&type=column"></iframe>
 	{% endif %}
 	</div>
 </div>
