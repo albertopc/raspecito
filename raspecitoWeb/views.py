@@ -136,7 +136,8 @@ def captureOff():
 def about():
 	tData={
 		'now':datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S'),
-		'uptime':uptime()
+		'uptime':uptime(),
+		'loadavg':loadavg()
 	}
 
 	return render_template("about.html",
