@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 <p>
+	{% if type in ["st","sl","sp","sm"] %}
+	<a href="/sistema?type=si" class="btn btn-primary" role="button">Volver</a>
+	{% else %}
 	<a href="/wstation" class="btn btn-primary" role="button">Volver</a>
+	{% endif %}
 </p>
 
 <div class="panel panel-default">
@@ -16,6 +20,14 @@
 		<h3 class="panel-title">Luminosidad</h3>
 	{% elif type == "m" %}
 		<h3 class="panel-title">Movimiento</h3>
+	{% elif type == "st" %}
+		<h3 class="panel-title">Sistema - Temperatura</h3>
+	{% elif type == "sl" %}
+		<h3 class="panel-title">Sistema - Carga</h3>
+	{% elif type == "sp" %}
+		<h3 class="panel-title">Sistema - Procesos</h3>
+	{% elif type == "sm" %}
+		<h3 class="panel-title">Sistema - Memoria</h3>
 	{% endif %}
 	</div>
 	<div class="panel-body">
@@ -29,6 +41,14 @@
 		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/14265/charts/7?width=300&height=260&days=1&dynamic=true&yaxis=lx&average=60"></iframe>
 	{% elif type == "m" %}
 		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/19524/charts/1?width=300&height=260&days=1&dynamic=true&yaxis=Movimiento&sum=30&type=column"></iframe>
+	{% elif type == "st" %}
+		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/11713/charts/1?width=300&height=260&days=1&dynamic=true&yaxis=ºC&average=60"></iframe>
+	{% elif type == "sl" %}
+		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/11713/charts/2?width=300&height=260&days=1&dynamic=true&yaxis=Carga&average=60"></iframe>
+	{% elif type == "sp" %}
+		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/11713/charts/3?width=300&height=260&days=1&dynamic=true&yaxis=Procesos&average=60"></iframe>
+	{% elif type == "sm" %}
+		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/11713/charts/4?width=300&height=260&days=1&dynamic=true&yaxis=RAM&average=60"></iframe>
 	{% endif %}
 	</div>
 </div>

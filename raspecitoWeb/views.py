@@ -131,21 +131,29 @@ def captureOff():
 	os.remove(config.captureImageFlagFile)
 	return vigilancia()
 	
-@raspecitoWeb.route('/about')
+@raspecitoWeb.route('/sistema', methods=["GET", "POST"])
 @requires_auth
-def about():
+def sistema():
 	tData={
 		'now':datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S'),
 		'uptime':uptime(),
 		'loadavg':loadavg()
 	}
 
-	return render_template("about.html",
-							title='Acerca de...',
-							active="4",
-							**tData
+	return render_template("system.html",
+							title='Sistema',
+							active="4"+"."+request.args.get("type"),
+							**tData							
 	)
 
+@raspecitoWeb.route('/about')
+@requires_auth
+def about():
+	return render_template("about.html",
+							title='Acerca de...',
+							active="5"
+	)
+	
 @raspecitoWeb.route('/admin', methods=["GET", "POST"])
 @requires_auth
 def admin():

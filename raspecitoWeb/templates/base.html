@@ -53,18 +53,27 @@
 				<li {% if active>"2" and active<"3" %} class="active" {% endif %} class="dropdown">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gráficas <span class="caret"></span></a>
 				  <ul class="dropdown-menu" role="menu">
+					<li class="dropdown-header">Sensores</li>
 					<li {% if active=="2.t" %} class="active" {% endif %}><a href="/graficas?type=t">Temperatura</a></li>
 					<li {% if active=="2.h" %} class="active" {% endif %}><a href="/graficas?type=h">Humedad</a></li>
 					<li {% if active=="2.p" %} class="active" {% endif %}><a href="/graficas?type=p">Presión</a></li>
 					<li {% if active=="2.l" %} class="active" {% endif %}><a href="/graficas?type=l">Luminosidad</a></li>
-					<li {% if active=="2.m" %} class="active" {% endif %}><a href="/graficas?type=m">Presencia</a></li>
+					<li {% if active=="2.m" %} class="active" {% endif %}><a href="/graficas?type=m">Movimiento</a></li>
+					<li class="divider"></li>
+					<li class="dropdown-header">Sistema</li>
+					<li {% if active=="2.st" %} class="active" {% endif %}><a href="/graficas?type=st">Temperatura</a></li>
+					<li {% if active=="2.sl" %} class="active" {% endif %}><a href="/graficas?type=sl">Carga</a></li>
+					<li {% if active=="2.sp" %} class="active" {% endif %}><a href="/graficas?type=sp">Procesos</a></li>
+					<li {% if active=="2.sm" %} class="active" {% endif %}><a href="/graficas?type=sm">Memoria</a></li>
 				  </ul>
 				</li>
 				<li {% if active=="3" %} class="active" {% endif %}><a href="/vigilancia">Vigilancia</a></li>
 				<li {% if active>"4" and active<"5" %} class="active" {% endif %} class="dropdown">
-				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administración<span class="caret"></span></a>
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sistema<span class="caret"></span></a>
 				  <ul class="dropdown-menu" role="menu">
-					<li {% if active=="4.r" %} class="active" {% endif %}><a href="/admin?type=r">Reboot</a></li>
+					<li {% if active=="4.si" %} class="active" {% endif %}><a href="/sistema?type=si">Información del sistema</a></li>
+					<li class="divider"></li>
+					<li {% if active=="4.sr" %} class="active" {% endif %}><a href="/admin?type=sr">Reiniciar</a></li>
 				  </ul>
 				</li>
 				<li {% if active=="5" %} class="active" {% endif %}><a href="/about">Acerca de...</a></li>
