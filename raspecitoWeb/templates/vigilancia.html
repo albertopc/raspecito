@@ -3,7 +3,7 @@
 <p>
 	<a href="/" class="btn btn-primary" role="button">Volver</a>
 	<a href="/vigilancia" class="btn btn-default" role="button">Recargar</a>
-	<a href="/snapshot" class="btn btn-warning" role="button">Capturar</a>
+	<a href="/takeImage" class="btn btn-warning" role="button">Capturar</a>
 	{% if capture %}
 	<a href="/captureOff" class="btn btn-danger" role="button">Desactivar Captura</a>
 	{% else %}
@@ -20,8 +20,8 @@
 	{% if fotos %}
 		{% for i in fotos %}
 			<li>
-				<a href="/seeSnapshot?id={{i}}">{{i}}</a>
-				<a href="/seeSnapshot?id={{i}}"><button type="button" class="btn btn-xs btn-info">Ver</button></a>
+				<a href="/viewImage?id={{i}}">{{i}}</a>
+				<a href="/viewImage?id={{i}}"><button type="button" class="btn btn-xs btn-info">Ver</button></a>
 				<a href="/deleteImage?id={{i}}"><button type="button" class="btn btn-xs btn-danger">Borrar</button></a>
 			</li>
 		{% endfor %}

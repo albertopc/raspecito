@@ -94,9 +94,9 @@ def vigilancia():
 		capture=os.path.isfile(config.captureImageFlagFile)
 		)
 
-@raspecitoWeb.route('/snapshot', methods=["GET", "POST"])
+@raspecitoWeb.route('/takeImage', methods=["GET", "POST"])
 @requires_auth
-def snapshot():
+def takeImage():
 	snapshot_dir=config.captureImageFolder
 	captureImage(snapshot_dir)
 	return vigilancia()
@@ -114,9 +114,9 @@ def captureOn():
 	touch(config.captureImageFlagFile)
 	return vigilancia()
 
-@raspecitoWeb.route('/seeSnapshot', methods=["GET", "POST"])
+@raspecitoWeb.route('/viewImage', methods=["GET", "POST"])
 @requires_auth
-def seeSnapshot():
+def viewImage():
     return render_template("captura.html",
                            title='Capturas',
 						   active="3",
@@ -129,9 +129,9 @@ def captureOff():
 	os.remove(config.captureImageFlagFile)
 	return vigilancia()
 	
-@raspecitoWeb.route('/sistema', methods=["GET", "POST"])
+@raspecitoWeb.route('/sysInfo', methods=["GET", "POST"])
 @requires_auth
-def sistema():
+def sysInfo():
 	tData={
 		'now':datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S'),
 		'uptime':uptime(),
@@ -155,12 +155,14 @@ def about():
 @raspecitoWeb.route('/admin', methods=["GET", "POST"])
 @requires_auth
 def admin():
-	if request.args.get("type")=="r":
+	if request.args.get("type")=="sr":
 		# Reboot
 		reboot()
 
 		return render_template("esperar.html",
 			title='Esperar',
 			active="4"+"."+request.args.get("type")
-			)
-				
+		)
+	else:
+		return True
+	
