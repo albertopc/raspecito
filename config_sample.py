@@ -18,3 +18,6 @@ username='myuser'
 password='mypasswd'
 captureImageFolder="/home/pi/apps/raspecitoWeb/static/snapshots/"
 captureImageFlagFile=pirCaptureFlagFile
+
+# RPi Monitor
+thingspeak_rpimonitor_key='Z12345678901234Z'
