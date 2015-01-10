@@ -4,8 +4,8 @@
  
 echo() { :; } # comment line to enable debugging
  
-apiKey=8BEJB51VY48A2GSC # ThingSpeak channel write API key, put your own
- 
+apiKey=$(cat config.py | awk -F= '/thingspeak_rpimonitor_key=/ {gsub("\047","",$2); print $2}') # ThingSpeak channel write API key, put your own
+
 freeram=$(free -m | awk '/Mem:/ { print $4 }')
 freeroot=$(df -BM | awk '/rootfs/ { print substr($4, 1, length($4)-1) }')
 freependrive=$(df -BM | awk '/sda1/ { print substr($4, 1, length($4)-1) }')
