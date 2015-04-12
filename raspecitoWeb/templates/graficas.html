@@ -32,23 +32,23 @@
 	</div>
 	<div class="panel-body">
 	{% if type == "t" %}
-		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/14265/charts/3?width=300&height=260&days=1&dynamic=true&yaxis=ºC&timescale=60"></iframe>
+		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/{{wstation_channel}}/charts/3?width=300&height=260&days=1&dynamic=true&yaxis=ºC&timescale=60"></iframe>
 	{% elif type == "h" %}
-		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/14265/charts/2?width=300&height=260&days=1&dynamic=true&yaxis=%25&timescale=60"></iframe>
+		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/{{wstation_channel}}/charts/2?width=300&height=260&days=1&dynamic=true&yaxis=%25&timescale=60"></iframe>
 	{% elif type == "p" %}
-		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/14265/charts/4?width=300&height=260&days=1&dynamic=true&yaxis=hPa&timescale=60"></iframe>
+		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/{{wstation_channel}}/charts/4?width=300&height=260&days=1&dynamic=true&yaxis=hPa&timescale=60"></iframe>
 	{% elif type == "l" %}
-		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/14265/charts/7?width=300&height=260&days=1&dynamic=true&yaxis=lx&average=60"></iframe>
+		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/{{wstation_channel}}/charts/7?width=300&height=260&days=1&dynamic=true&yaxis=lx&average=60"></iframe>
 	{% elif type == "m" %}
-		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/19524/charts/1?width=300&height=260&days=1&dynamic=true&yaxis=Movimiento&sum=30&type=column"></iframe>
+		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/{{pir_channel}}/charts/1?width=300&height=260&days=1&dynamic=true&yaxis=Movimiento&sum=30&type=column"></iframe>
 	{% elif type == "st" %}
-		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/11713/charts/1?width=300&height=260&days=1&dynamic=true&yaxis=ºC&average=60"></iframe>
+		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/{{rpimonitor_channel}}/charts/1?width=300&height=260&days=1&dynamic=true&yaxis=ºC&average=60"></iframe>
 	{% elif type == "sl" %}
-		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/11713/charts/2?width=300&height=260&days=1&dynamic=true&yaxis=Carga&average=60"></iframe>
+		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/{{rpimonitor_channel}}/charts/2?width=300&height=260&days=1&dynamic=true&yaxis=Carga&average=60"></iframe>
 	{% elif type == "sp" %}
-		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/11713/charts/3?width=300&height=260&days=1&dynamic=true&yaxis=Procesos&average=60"></iframe>
+		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/{{rpimonitor_channel}}/charts/3?width=300&height=260&days=1&dynamic=true&yaxis=Procesos&average=60"></iframe>
 	{% elif type == "sm" %}
-		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/11713/charts/4?width=300&height=260&days=1&dynamic=true&yaxis=RAM&average=60"></iframe>
+		<iframe width="300" height="260" style="border: 0px solid #cccccc;" src="http://api.thingspeak.com/channels/{{rpimonitor_channel}}/charts/4?width=300&height=260&days=1&dynamic=true&yaxis=RAM&average=60"></iframe>
 	{% endif %}
 	</div>
 </div>

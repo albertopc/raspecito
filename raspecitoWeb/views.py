@@ -75,10 +75,17 @@ def wstation():
 @raspecitoWeb.route('/graficas', methods=["GET", "POST"])
 @requires_auth
 def graficas():
+    tData={
+    	'wstation_channel':config.thingspeak_wstation_channel,
+    	'pir_channel':config.thingspeak_pir_channel,
+    	'rpimonitor_channel':config.thingspeak_rpimonitor_channel,
+    }
+
     return render_template("graficas.html",
                            title='Seguimientos',
 						   active="2"+"."+request.args.get("type"),
-						   type=request.args.get("type")
+						   type=request.args.get("type"),
+						   **tData
 						   )
 
 @raspecitoWeb.route('/vigilancia', methods=["GET", "POST"])

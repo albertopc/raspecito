@@ -57,6 +57,8 @@ target/
 snaphosts/
 raspecitoWeb/static/snapshots
 config.py
+config_sev.py
+config_vll.py
 venv/
 tmp/
 .captureImage
