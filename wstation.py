@@ -13,6 +13,7 @@ from gy30 import readLuminosity
 from dht22 import readHumidity
 from gy65 import readPressure
 from thingspeak import publishThingspeak
+from display import display_text
 
 if __name__ == "__main__":
 
@@ -25,18 +26,24 @@ if __name__ == "__main__":
 
 		OutTemp=readTemperature()[0] # Take value in celsius only
 		print("DS18B20 Temp:\t{0} C".format(OutTemp))
+
+		display_text(2,2, "{:.2f} C".format(OutTemp)+" / {0} %".format(Humi))
 		
 		(Pressure, InTemp2, Altitude) = readPressure()
 		print("GY65 Pressure:\t{0} hPa".format(Pressure))
 		print("GY65 Temp:\t{0} C".format(InTemp2))
 		print("GY65 Altitude:\t{0} m".format(Altitude))
-
+		display_text(2,11, "{0} hPa".format(Pressure))	
+		
 		Luminosity = readLuminosity()
 		print("GY30 Light:\t{0} lx".format(Luminosity))
+		display_text(2,20, "{:.2f} lx".format(Luminosity))	
 
+		
 		# Fields: Indoor Temp, Humidity, Outdoor Temp, Pressure, Altitude, Indoor Temp2, Luminosity, Motion
 		params=(InTemp, Humi, OutTemp, Pressure, Altitude, InTemp2, Luminosity, "")
 		publishThingspeak(thingspeak_key, params)
+		
 
 	except:
 		print "Some error ocurred"
