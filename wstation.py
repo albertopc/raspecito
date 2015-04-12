@@ -16,7 +16,22 @@ from gy65 import readPressure
 from thingspeak import publishThingspeak
 from display import display_text
 
+
+
 if __name__ == "__main__":
+	publish=1
+	try:
+		opts, args = getopt.getopt(sys.argv[1:],"hd",["help","display-only"])
+	except getopt.GetoptError:
+		print 'wstation.py [-d]'
+		sys.exit(2)
+
+	for opt, arg in opts:
+		if opt in ("-h","help"):
+			print 'wstation.py -d'
+			sys.exit()
+		elif opt in ("-d", "--display-only"):
+			publish=0
 
 	thingspeak_key=config.thingspeak_wstation_key
 	
@@ -45,7 +60,7 @@ if __name__ == "__main__":
 		print("GY30 Light:\t{0} lx".format(Luminosity))
 		display_text(65,22, "{:.2f} lx".format(Luminosity))	
 
-		if len(sys.argv) == 1:
+		if publish == 1:
 			# Fields: Indoor Temp, Humidity, Outdoor Temp, Pressure, Altitude, Indoor Temp2, Luminosity, Motion
 			params=(InTemp, Humi, OutTemp, Pressure, Altitude, InTemp2, Luminosity, "")
 			publishThingspeak(thingspeak_key, params)
