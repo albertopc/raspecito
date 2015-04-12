@@ -98,7 +98,8 @@ def vigilancia():
 		title='Vigilancia',
 		active="3",
 		fotos=snapshots,
-		capture=os.path.isfile(config.captureImageFlagFile)
+		capture=os.path.isfile(config.captureImageFlagFile),
+		pir_channel=config.thingspeak_pir_channel
 		)
 
 @raspecitoWeb.route('/takeImage', methods=["GET", "POST"])
