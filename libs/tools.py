@@ -27,6 +27,14 @@ def reboot():
 	proc.stdout.flush()
 	return True
 
+def wakeuphomeserver(mac):
+	print "Launching command"
+	args = ["sudo", "wakeonlan", mac]
+	proc = Popen(args, stdout=PIPE)
+	out = proc.stdout.read()
+	proc.stdout.flush()
+	return True
+
 def uptime():
 	with open('/proc/uptime', 'r') as f:
 		uptime_seconds = float(f.readline().split()[0])

@@ -171,6 +171,13 @@ def admin():
 			title='Esperar',
 			active="4"+"."+request.args.get("type")
 		)
+	elif request.args.get("type")=="sw":
+		# wake up home server
+		wakeuphomeserver(config.homeserver_mac)
+
+		return render_template("despertar.html",
+			title='Despertar',
+			active="4"+"."+request.args.get("type")
+		)
 	else:
 		return True
-	
