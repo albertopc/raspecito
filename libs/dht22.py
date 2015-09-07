@@ -23,11 +23,12 @@ def readHumidity(type=2302, pin=25):
 		temp = re.findall(r'[-]*[0-9]*.[0-9]*', temp[0])[0]
 		humi = re.findall(r'[-]*[0-9]*.[0-9]*', humi[0])[0]
 	else:
-		if (time.time() - start) > 5:
-			temp="0"
-			humi="0"
-		else:
-			return readHumidity(type, pin)
+#		if (time.time() - start) > 5:
+#			temp="0"
+#			humi="0"
+#		else:
+#			return readHumidity(type, pin)
+		return readHumidity(type, pin)
 	return humi, temp
 	
 if __name__ == "__main__":
